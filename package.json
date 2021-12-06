@@ -1,11 +1,11 @@
 {
-	"name": "vscode-codeaction-ui-sample",
-	"displayName": "Code Action UI Sample",
-	"description": "Sample to demonstrate code actions with UI",
+	"name": "layerfile-extension",
+	"displayName": "Layerfile Extensions",
+	"description": "Layerfile Extensions for vscode",
 	"version": "1.0.0",
 	"author": "Microsoft Corporation",
 	"license": "MIT",
-	"icon": "./resources/logo.png",
+	"icon": "resources/logo.png",
 	"repository": { "type": "git", "url": "https://github.com/Peter8234/vscode-layerfile.git" },
 	"keywords": [
 		"multi-root ready"
