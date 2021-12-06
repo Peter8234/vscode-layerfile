@@ -1,12 +1,14 @@
-# Full featured Layerfile Extensions
+# Full featured Layerfile Extensions for VSCode
+
 
 ## Functionality
-
 It has the following language features:
-- Diagnostics
 - Semantic Tokens
-- Code Actions with UI
--
+
+## Planned Functionality
+- Documentation on Hover
+- Diagnostics for layefiles
+- Code Lens capability to execute layerfiles locally
 
 
 ## Structure
