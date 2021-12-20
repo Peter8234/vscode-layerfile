@@ -1,4 +1,3 @@
-'use strict';
 import { SemanticTokens, SemanticTokenTypes} from 'vscode-languageserver-types';
 import * as antlr4 from "antlr4ts";
 import { LayerfileLexer } from "./antlr/LayerfileLexer"
@@ -85,15 +84,6 @@ const mapTokens = (token : antlr4.Token, tokenArray : IParsedToken[])  => {
 			handleNormalToken(token, SemanticTokenTypes.keyword, tokenArray)
 			return
 		case LayerfileLexer.COMMENT:
-		case LayerfileLexer.CHECKPOINT_COMMENT:
-		case LayerfileLexer.BUILD_ENV_COMMENT:
-		case LayerfileLexer.BUTTON_COMMENT:
-		case LayerfileLexer.ENV_COMMENT:
-		case LayerfileLexer.WEBSITE_COMMENT:
-		case LayerfileLexer.MEMORY_COMMENT:
-		case LayerfileLexer.SECRET_ENV_COMMENT:
-		case LayerfileLexer.USER_COMMENT:
-		case LayerfileLexer.FILE_COMMENT:
 			handleNormalToken(token, SemanticTokenTypes.comment, tokenArray)
 			return
 		case LayerfileLexer.BUILD_ENV_VALUE:
@@ -103,25 +93,14 @@ const mapTokens = (token : antlr4.Token, tokenArray : IParsedToken[])  => {
 		case LayerfileLexer.USER_NAME:
 			handleNormalToken(token, SemanticTokenTypes.variable, tokenArray)
 			return
-		case LayerfileLexer.MEMORY_AMOUNT:
-		case LayerfileLexer.SPLIT_NUMBER:
-			handleNormalToken(token, SemanticTokenTypes.number, tokenArray)
-			return
 		case LayerfileLexer.FILE:
 			handleNormalToken(token, SemanticTokenTypes.string, tokenArray)
-			return
-		case LayerfileLexer.ENV_VALUE_WS:
-			handleKeyValToken(token, tokenArray, {
-				keyType: SemanticTokenTypes.variable,
-				valType: SemanticTokenTypes.string,
-				split: /\s+/
-			})
 			return
 		case LayerfileLexer.ENV_VALUE:
 			handleKeyValToken(token, tokenArray, {
 				keyType: SemanticTokenTypes.variable,
-				valType: SemanticTokenTypes.string,
-				split: /=/
+				valType: SemanticTokenTypes.variable,
+				split: /\s*=\s*/
 			})
 			return
 		case LayerfileLexer.SKIP_REMAINING_IF_VALUE:
@@ -148,8 +127,7 @@ function parseText(text: string): IParsedToken[] {
 	const r: IParsedToken[] = [];
 	var chars = antlr4.CharStreams.fromString(text)
 	var lexer = new LayerfileLexer(chars);
-	var tokens : antlr4.Token[];
-	tokens = lexer.getAllTokens()
+	var tokens = lexer.getAllTokens();
 	for (const token of tokens) {
 		mapTokens(token, r)
 	}

@@ -3,6 +3,8 @@
 
 import { ParseTreeListener } from "antlr4ts/tree/ParseTreeListener";
 
+import { LayerfileContext } from "./LayerfileParser";
+import { CmdContext } from "./LayerfileParser";
 import { ButtonContext } from "./LayerfileParser";
 import { CacheContext } from "./LayerfileParser";
 import { CheckpointContext } from "./LayerfileParser";
@@ -23,8 +25,7 @@ import { Expose_websiteContext } from "./LayerfileParser";
 import { UserContext } from "./LayerfileParser";
 import { WaitContext } from "./LayerfileParser";
 import { WorkdirContext } from "./LayerfileParser";
-import { CommentContext } from "./LayerfileParser";
-import { LayerfileContext } from "./LayerfileParser";
+import { OtherContext } from "./LayerfileParser";
 
 
 /**
@@ -32,6 +33,28 @@ import { LayerfileContext } from "./LayerfileParser";
  * `LayerfileParser`.
  */
 export interface LayerfileParserListener extends ParseTreeListener {
+	/**
+	 * Enter a parse tree produced by `LayerfileParser.layerfile`.
+	 * @param ctx the parse tree
+	 */
+	enterLayerfile?: (ctx: LayerfileContext) => void;
+	/**
+	 * Exit a parse tree produced by `LayerfileParser.layerfile`.
+	 * @param ctx the parse tree
+	 */
+	exitLayerfile?: (ctx: LayerfileContext) => void;
+
+	/**
+	 * Enter a parse tree produced by `LayerfileParser.cmd`.
+	 * @param ctx the parse tree
+	 */
+	enterCmd?: (ctx: CmdContext) => void;
+	/**
+	 * Exit a parse tree produced by `LayerfileParser.cmd`.
+	 * @param ctx the parse tree
+	 */
+	exitCmd?: (ctx: CmdContext) => void;
+
 	/**
 	 * Enter a parse tree produced by `LayerfileParser.button`.
 	 * @param ctx the parse tree
@@ -253,25 +276,14 @@ export interface LayerfileParserListener extends ParseTreeListener {
 	exitWorkdir?: (ctx: WorkdirContext) => void;
 
 	/**
-	 * Enter a parse tree produced by `LayerfileParser.comment`.
+	 * Enter a parse tree produced by `LayerfileParser.other`.
 	 * @param ctx the parse tree
 	 */
-	enterComment?: (ctx: CommentContext) => void;
+	enterOther?: (ctx: OtherContext) => void;
 	/**
-	 * Exit a parse tree produced by `LayerfileParser.comment`.
+	 * Exit a parse tree produced by `LayerfileParser.other`.
 	 * @param ctx the parse tree
 	 */
-	exitComment?: (ctx: CommentContext) => void;
-
-	/**
-	 * Enter a parse tree produced by `LayerfileParser.layerfile`.
-	 * @param ctx the parse tree
-	 */
-	enterLayerfile?: (ctx: LayerfileContext) => void;
-	/**
-	 * Exit a parse tree produced by `LayerfileParser.layerfile`.
-	 * @param ctx the parse tree
-	 */
-	exitLayerfile?: (ctx: LayerfileContext) => void;
+	exitOther?: (ctx: OtherContext) => void;
 }
 
