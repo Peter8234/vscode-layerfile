@@ -3,11 +3,14 @@
 	"displayName": "Layerfile Extensions",
 	"description": "Layerfile Extensions for vscode",
 	"publisher": "webappio",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"author": "webappio",
 	"license": "MIT",
 	"icon": "resources/logo.png",
-	"repository": { "type": "git", "url": "https://github.com/Peter8234/vscode-layerfile.git" },
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Peter8234/vscode-layerfile.git"
+	},
 	"keywords": [
 		"multi-root ready"
 	],
