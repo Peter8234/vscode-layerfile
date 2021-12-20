@@ -4,10 +4,11 @@
 ## Functionality
 It has the following language features:
 - Semantic Tokens
-
-## Planned Functionality
 - Documentation on hover
 - Diagnostics for layerfiles
+- Code Completion
+
+## Planned Feature
 - Code Lens capability to execute layerfiles locally
 
 
