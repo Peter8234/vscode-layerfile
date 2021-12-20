@@ -1,17 +1,10 @@
 {
 	"name": "client",
-	"displayName": "Code Action UI Sample - Client",
+	"displayName": "Layerfile Extension",
 	"version": "1.0.0",
 	"private": true,
-	"author": "Microsoft Corporation",
+	"author": "webappio",
 	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Microsoft/vscode-extension-samples.git"
-	},
-	"bugs": {
-		"url": "https://github.com/Microsoft/vscode-extension-samples/issues"
-	},
 	"engines": {
 		"vscode": "^1.52.0"
 	},

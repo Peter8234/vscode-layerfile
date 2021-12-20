@@ -6,8 +6,8 @@ It has the following language features:
 - Semantic Tokens
 
 ## Planned Functionality
-- Documentation on Hover
-- Diagnostics for layefiles
+- Documentation on hover
+- Diagnostics for layerfiles
 - Code Lens capability to execute layerfiles locally
 
 

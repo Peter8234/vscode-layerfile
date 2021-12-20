@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import { window as Window} from 'vscode';
+import { window as Window, workspace} from 'vscode';
 import {
 	LanguageClient,
 	LanguageClientOptions,
@@ -15,14 +15,10 @@ let client: LanguageClient;
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-
-
 	const debugOptions = { execArgv: ['--nolazy', '--inspect=6011'] };
-
 	const serverModule = context.asAbsolutePath(
 		path.join('server', 'out', 'server.js')
 	);
-
 	// If the extension is launched in debug mode then the debug server options are used
 	// Otherwise the run options are used
 	const serverOptions: ServerOptions = {
@@ -33,11 +29,14 @@ export function activate(context: vscode.ExtensionContext) {
 			options: debugOptions
 		}
 	};
-
 	// Options to control the language client
 	const clientOptions: LanguageClientOptions = {
 		// Register the server for plain text documents
 		documentSelector: [{ language: 'Layerfile' }],
+		synchronize: {
+			// Notify the server about file changes to '.clientrc files contained in the workspace
+			fileEvents: workspace.createFileSystemWatcher('**/.clientrc')
+		}
 	};
 
 	// Create the language client and start the client.
