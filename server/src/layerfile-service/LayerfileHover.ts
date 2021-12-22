@@ -98,80 +98,65 @@ const DirectiveHover : any = {
 	"The WORKDIR instruction changes the location from which files are resolved in the runner.\n\n" +
 	"Ex. WORKDIR /tmp" +
 	"\n\n[Online documentation](https://webapp.io/docs/layerfile-reference/workdir)",
+	[LayerfileLexer.FROM] :
+	"FROM [source]\n\n" +
+	"The FROM instruction tells webapp.io what base to use to run tests from.\n\n" +
+	"Ex. FROM vm/ubuntu:18.04" +
+	"\n\n[Online documentation](https://webapp.io/docs/layerfile-reference/from)"
 }
 
 
 const PresetVariableHover : any = {
-	"SUBDOMAIN":
-	"The SUBDOMAIN variable is often used to set the HOST variable for webservers.\n\n" +
-	"It is a cleaned up version of the $GIT_BRANCH variable, acceptable for use in a URL.\n\n" +
-	"Ex. SUBDOMAIN=my-branch",
-	"DEPLOYMENT_HOST":
-	"The DEPLOYMENT_HOST variable is set if a deployment exists for your run.\n\n" +
-	"It’s often used to tell a webserver where it is being hosted.\n\n" +
-	"Ex. DEPLOYMENT_HOST=job-5.demo.example.com",
-	"CI":
-	"The CI variable is always true while running a Layerfile.\n\n" +
-	"Ex. CI=true",
-	"DEBIAN_FRONTEND":
-	"The DEBIAN_FRONTEND variable is always set to noninteractive in webapp.io.\n\n" +
-	"To change this behavior, use, e.g., ENV DEBIAN_FRONTEND=readline\n\n" +
-	"Ex. DEBIAN_FRONTEND=noninteractive",
-	"GIT_TAG":
-	"GIT_TAG is the result of running git describe --always in the repository.\n\n" +
-	"Ex. GIT_TAG=v1.0.0",
-	"GIT_COMMIT":
-	"GIT_COMMIT is the result of running git rev-parse HEAD in the repository.\n\n" +
-	"Ex. GIT_COMMIT=111122223333444455556666777788889999aaaa",
-	"GIT_SHORT_COMMIT":
-	"GIT_SHORT_COMMIT is the first 12 characters of running git rev-parse HEAD in the repository.\n\n" +
-	"Ex. GIT_SHORT_COMMIT=111122223333",
-	"GIT_COMMIT_TITLE":
-	"Last git commit message\n\n" +
-	"Ex. GIT_COMMIT_TITLE=\"[improvement] do something\"",
-	"GIT_CLONE_USER":
-	"GIT_CLONE_URL is a token which can be used to clone this repository.\n\n" +
-	"git clone https://$GIT_CLONE_USER@github.com/org/repo.git\n\n" +
-	"Ex. GIT_CLONE_USER=x-access-token:<token>",
-	"EXPOSE_WEBSITE_HOST":
-	"EXPOSE_WEBSITE_HOST is the hostname exposed by EXPOSE WEBSITE\n\n" +
-	"It’s often used to link a frontend with a backend when running both with EXPOSE WEBSITE and RUN BACKGROUND\n\n" +
-	"Ex. EXPOSE_WEBSITE_HOST=(uuid).cidemo.co",
-	"WEBAPPIO":
-	"WEBAPPIO is always true when running a Layerfile\n\n" +
-	"Ex. WEBAPPIO=true",
-	"GIT_BRANCH":
-	"GIT_BRANCH is the branch which is checked out in this repository.\n\n" +
-	"Ex. GIT_BRANCH=staging",
-	"JOB_ID":
-	"JOB_ID always exists.\n\n" +
-	"It’s set to the ID of the current running job.\n\n" +
-	"Ex. JOB_ID=5",
-	"PULL_REQUEST_URL":
-	"PULL_REQUEST_URL may or may not exist.\n\n" +
-	"It’s a link to the pull request that triggered this pipeline.\n\n" +
-	"Ex. PULL_REQUEST_URL=https://github.com/some/repo/pull_requests/5",
-	"REPOSITORY_NAME":
-	"REPOSITORY_NAME is the name of the repository.\n\n" +
-	"If the repository is at github.com/a/b, this would be “b”\n\n" +
-	"Ex. REPOSITORY_NAME=somerepo",
-	"REPOSITORY_OWNER":
-	"REPOSITORY_OWNER is the name of the owner of this repository.\n\n" +
-	" If the repository is at github.com/a/b, this would be “a”\n\n" +
-	"Ex. REPOSITORY_OWNER=repoowner",
-	"ORGANIZATION_NAME":
-	"ORGANIZATION_NAME is the name of the current organization.\n\n" +
-	"If the dashboard is at webapp.io/myorg, this would be “myorg”\n\n" +
-	"Ex. ORGANIZATION_NAME=myorg",
-	"RUNNER_ID":
-	"RUNNER_ID is the id of the current layerfile runner.\n\n" +
-	"Ex. RUNNER_ID=main-layerfile",
-	"RETRY_INDEX":
-	"RETRY_INDEX is the current retry for the given runner (initially 1, then when retried once, 2, etc)\n\n" +
-	"Ex. RETRY_INDEX=1",
-	"API_EXTRA":
-	"API_EXTRA is optional data passed in when a run is started by the API.\n\n" +
-	"Ex. API_EXTRA=some data passed from API",
+	"SUBDOMAIN":           "The SUBDOMAIN variable is often used to set the HOST variable for webservers.\n\n" +
+						   "It is a cleaned up version of the $GIT_BRANCH variable, acceptable for use in a URL.\n\n" +
+					       "Ex. SUBDOMAIN=my-branch",
+	"DEPLOYMENT_HOST":     "The DEPLOYMENT_HOST variable is set if a deployment exists for your run.\n\n" +
+	                       "It’s often used to tell a webserver where it is being hosted.\n\n" +
+						   "Ex. DEPLOYMENT_HOST=job-5.demo.example.com",
+	"CI":				   "The CI variable is always true while running a Layerfile.\n\n" +
+						   "Ex. CI=true",
+	"DEBIAN_FRONTEND":     "The DEBIAN_FRONTEND variable is always set to noninteractive in webapp.io.\n\n" +
+						   "To change this behavior, use, e.g., ENV DEBIAN_FRONTEND=readline\n\n" +
+						   "Ex. DEBIAN_FRONTEND=noninteractive",
+	"GIT_TAG": 		       "GIT_TAG is the result of running git describe --always in the repository.\n\n" +
+						   "Ex. GIT_TAG=v1.0.0",
+	"GIT_COMMIT":		   "GIT_COMMIT is the result of running git rev-parse HEAD in the repository.\n\n" +
+						   "Ex. GIT_COMMIT=111122223333444455556666777788889999aaaa",
+	"GIT_SHORT_COMMIT":    "GIT_SHORT_COMMIT is the first 12 characters of running git rev-parse HEAD in the repository.\n\n" +
+						   "Ex. GIT_SHORT_COMMIT=111122223333",
+	"GIT_COMMIT_TITLE":    "Last git commit message\n\n" +
+						   "Ex. GIT_COMMIT_TITLE=\"[improvement] do something\"",
+	"GIT_CLONE_USER":      "GIT_CLONE_URL is a token which can be used to clone this repository.\n\n" +
+						   "git clone https://$GIT_CLONE_USER@github.com/org/repo.git\n\n" +
+						   "Ex. GIT_CLONE_USER=x-access-token:<token>",
+	"EXPOSE_WEBSITE_HOST": "EXPOSE_WEBSITE_HOST is the hostname exposed by EXPOSE WEBSITE\n\n" +
+						   "It’s often used to link a frontend with a backend when running both with EXPOSE WEBSITE and RUN BACKGROUND\n\n" +
+						   "Ex. EXPOSE_WEBSITE_HOST=(uuid).cidemo.co",
+	"WEBAPPIO":			   "WEBAPPIO is always true when running a Layerfile\n\n" +
+						   "Ex. WEBAPPIO=true",
+	"GIT_BRANCH":		   "GIT_BRANCH is the branch which is checked out in this repository.\n\n" +
+						   "Ex. GIT_BRANCH=staging",
+	"JOB_ID": 			   "JOB_ID always exists.\n\n" +
+						   "It’s set to the ID of the current running job.\n\n" +
+						   "Ex. JOB_ID=5",
+	"PULL_REQUEST_URL":    "PULL_REQUEST_URL may or may not exist.\n\n" +
+						   "It’s a link to the pull request that triggered this pipeline.\n\n" +
+						   "Ex. PULL_REQUEST_URL=https://github.com/some/repo/pull_requests/5",
+	"REPOSITORY_NAME":     "REPOSITORY_NAME is the name of the repository.\n\n" +
+						   "If the repository is at github.com/a/b, this would be “b”\n\n" +
+						   "Ex. REPOSITORY_NAME=somerepo",
+	"REPOSITORY_OWNER":    "REPOSITORY_OWNER is the name of the owner of this repository.\n\n" +
+						   "If the repository is at github.com/a/b, this would be “a”\n\n" +
+						   "Ex. REPOSITORY_OWNER=repoowner",
+	"ORGANIZATION_NAME":   "ORGANIZATION_NAME is the name of the current organization.\n\n" +
+					       "If the dashboard is at webapp.io/myorg, this would be “myorg”\n\n" +
+						   "Ex. ORGANIZATION_NAME=myorg",
+	"RUNNER_ID":   	 	   "RUNNER_ID is the id of the current layerfile runner.\n\n" +
+				   		   "Ex. RUNNER_ID=main-layerfile",
+	"RETRY_INDEX": 		   "RETRY_INDEX is the current retry for the given runner (initially 1, then when retried once, 2, etc)\n\n" +
+				   		   "Ex. RETRY_INDEX=1",
+	"API_EXTRA":   		   "API_EXTRA is optional data passed in when a run is started by the API.\n\n" +
+				   		   "Ex. API_EXTRA=some data passed from API",
 }
 
 
