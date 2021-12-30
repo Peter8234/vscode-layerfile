@@ -3,7 +3,7 @@ import { ParseTreeWalker } from 'antlr4ts/tree/ParseTreeWalker'
 import { TextDocument } from 'vscode-languageserver-textdocument';
 import { Diagnostic, DiagnosticSeverity, Range } from "vscode-languageserver-types";
 import { LayerfileLexer } from "./antlr/LayerfileLexer"
-import { LayerfileParser, CheckpointContext, CloneContext, FromContext, Build_envContext, RunContext, MemoryContext, CopyContext, EnvContext, Expose_websiteContext, Secret_envContext, Setup_fileContext, SplitContext, UserContext, WorkdirContext, OtherContext, LayerfileContext } from './antlr/LayerfileParser';
+import { LayerfileParser, CheckpointContext, CloneContext, FromContext, Build_envContext, RunContext, MemoryContext, CopyContext, EnvContext, Expose_websiteContext, Secret_envContext, Setup_fileContext, SplitContext, UserContext, WorkdirContext, OtherContext, LayerfileContext, Skip_remain_ifContext } from './antlr/LayerfileParser';
 import { CharStreams, CommonTokenStream, Token, ConsoleErrorListener, ANTLRErrorListener, Recognizer, RecognitionException, ParserRuleContext } from 'antlr4ts';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -344,6 +344,10 @@ class LayerValidator implements LayerfileParserListener {
 			)
 		}
 	}
+
+	enterSkip_remain_if(ctx: Skip_remain_ifContext) {
+
+	};
 }
 
 
